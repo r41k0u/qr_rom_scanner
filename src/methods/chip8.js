@@ -1,7 +1,5 @@
-let step;
+
 let  bincol='#FFF'
-let fun;
-let romarray;
 class CPU {
 	constructor(renderer, keyboard) {
 		this.renderer = renderer;
@@ -318,7 +316,7 @@ class Keyboard {
     onKeyDown(event) {
         let key = this.KEYMAP[event.which];
         this.keysPressed[key] = true;
-
+        console.log("terabaaprandi")
         if (this.onNextKeyPress !== null && key) {
             this.onNextKeyPress(parseInt(key));
             this.onNextKeyPress = null;
@@ -407,18 +405,22 @@ let fps = 60, fpsInterval, startTime, now, then, elapsed;
 const renderer = new Renderer(10);
 const keyboard = new Keyboard();
 const cpu = new CPU(renderer, keyboard);
-fun = function(){
+function fun(){
     fpsInterval = 1000 / fps;
     then = Date.now();
     startTime = then;
     cpu.loadSpritesIntoMemory();
-    console.log(document.getElementById("romuint").innerHTML)
-    cpu.loadRom(document.getElementById("romuint").innerHTML);
+    let rom=Array.from(document.getElementById("romuint").textContent.split(','), Number)
+    console.log(rom)
+    cpu.loadRom(rom);
     loop = requestAnimationFrame(step);
     let char;
+    console.log("BRUH")
+
     document.getElementById("gamepad").addEventListener("mousedown", (event) => {
         if(event.target.id!="gamepad"){
             char=event.target.id.slice(3,4).charCodeAt(0)
+            console.log("teri maa randi")
             keyboard.virtualKeyDown(char);        
         }  
         });
@@ -446,7 +448,7 @@ document.getElementById("pixsel").addEventListener('click', function handleChang
 });
 }
 
-    step=function() {
+    function step() {
     now = Date.now();
     elapsed = now - then;
 

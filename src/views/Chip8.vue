@@ -12,13 +12,13 @@
             <ion-title size="large">Chip-08 Emulator Go brrrrrrrr</ion-title>
           </ion-toolbar>
         </ion-header>
-        <div id="wrapper">
+        <div id="wrapper" ref="foo">
         <div id="emulator">
-        <canvas></canvas>
+        <game-screen></game-screen>
         <game-pad></game-pad>
         <background-change></background-change>     
         <binary-change></binary-change>
-        <p id="romuint">>{{sharedStates.rom.at(0)}}</p>
+        <p id="romuint" style="visibility:hidden">{{sharedStates.rom.at(0)}}</p>
       </div>
       </div>
       </ion-content>
@@ -26,17 +26,14 @@
   </template>
   
   <script lang="ts">
-  import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar,useIonRouter } from '@ionic/vue';
+  import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/vue';
   import { defineComponent } from 'vue';
   import { states } from '../states'
   import GamePad from '../components/numpad.vue'
   import BinaryChange from '../components/binchange.vue'
-  import BackgroundChange from '../components/colorchange.vue'
-  window.addEventListener("DOMContentLoaded",()=>{
-    require('../methods/chip8.js') 
-  })
+  import GameScreen from '../components/canvas.vue'
 
-  
+  import BackgroundChange from '../components/colorchange.vue'
   export default defineComponent({
     name: 'Chip8Emu',
     components: {
@@ -48,6 +45,12 @@
       GamePad,
       BinaryChange,
       BackgroundChange,
+      GameScreen
+  },
+  mounted() {
+      if(this.$refs.foo){
+        require('../methods/chip8.js')
+      }
   },
   setup() {
     const sharedStates = states;
@@ -64,6 +67,7 @@
   </script>
   
   <style>
+
   #romunit{
     visibility: hidden;
   }
@@ -71,10 +75,6 @@
     display: flex;
     align-items: center;
   }
-  #gamepad{
-    align-self: center;
-  }
-  
   #emulator{
       width:max-content;
       margin: 0 auto;
@@ -83,14 +83,5 @@
       flex-direction: column;
   }
   
-  #backsel{
-    display: flex;
-    align-self: center;
-  }
-  
-  #pixsel{
-    display:flex;
-    align-self: center;
-  }
   </style>
   

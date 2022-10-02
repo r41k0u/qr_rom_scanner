@@ -73,7 +73,7 @@ export default defineComponent({
     const router = useIonRouter();
     let scanned = false;
 
-    const onScanned = (result: ScanResult) => {
+    async function onScanned (result: ScanResult) {
       if (result.results.length > 0 && scanned === false && sharedStates.continuousScan === false) {
         scanned = true;
         sharedStates.barcodeResults = result.results;
@@ -84,7 +84,7 @@ export default defineComponent({
           }  
         });
         console.log(sharedStates.rom);
-        router.replace("/chip8");
+       router.replace("/chip8");
       } else {
         if (result.deviceOrientation === "portrait") {
           viewBox.value = "0 0 " + frameHeight + " " + frameWidth;
