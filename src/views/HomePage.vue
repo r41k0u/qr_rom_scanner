@@ -2,13 +2,12 @@
   <ion-page>
     <ion-header>
       <ion-toolbar>
-        <ion-title>QR Code Scanner</ion-title>
+        <ion-title>Game Over</ion-title>
       </ion-toolbar>
     </ion-header>
-
-    <ion-content>
+    <ion-content class="bg">
       <div class="img">
-        <img src="assets/gameover.png" />
+        <img src="assets/pixil-frame-0.png" />
       </div>
       <div class="startButton">
         <ion-button v-on:click="gotoScannerPage">Scan To Play</ion-button>
@@ -53,15 +52,24 @@ export default defineComponent({
 </script>
 
 <style scoped>
-.startButton, .img{
+.startButton, .img {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 0.5rem;
+  margin: 1rem;
 }
 
 .img {
-  scale: 80%;
+  scale: 0.25;
+  height: 25rem;
+}
+
+.bg {
+  color: aqua;
+}
+
+#background-content {
+  background-color: aqua;
 }
 
 #container {
