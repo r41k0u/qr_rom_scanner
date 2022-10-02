@@ -61,7 +61,8 @@ export default defineComponent({
 }
 
 .img {
-  scale: 80%;
+  scale: 75%;
+  height: 25rem;
 }
 
 #container {
