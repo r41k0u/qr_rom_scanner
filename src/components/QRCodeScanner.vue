@@ -130,7 +130,7 @@ onBeforeUnmount(() => {
 
 
 
-watch(() => props.torchOn, (newVal, oldVal) => {
+watch(() => props.torchOn, (newVal) => {
   if (newVal === true) {
     DBR.toggleTorch({on:true});
   }else{

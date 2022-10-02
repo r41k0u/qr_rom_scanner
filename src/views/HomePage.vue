@@ -2,31 +2,23 @@
   <ion-page>
     <ion-header>
       <ion-toolbar>
-        <ion-title>QR Code Scanner</ion-title>
+        <ion-title>Game Over</ion-title>
       </ion-toolbar>
     </ion-header>
 
-    <ion-content>
-      <div class="startButton">
-        <ion-button v-on:click="gotoScannerPage">Scan Barcodes</ion-button>
+    <ion-content class="bg">
+      <div class="img">
+        <img src="assets/pixil-frame-0.png" />
       </div>
-      <ion-list>
-        <ion-list-header v-if="sharedStates.barcodeResults.length>0">
-          <ion-label>Results:</ion-label>
-        </ion-list-header>
-        <ion-item v-bind:key="'result'+index" v-for="(result,index) in sharedStates.barcodeResults">
-          <ion-label>{{result.barcodeFormat+": "+result.barcodeText}}</ion-label>
-        </ion-item>
-        <ion-item>
-          <ion-label>{{sharedStates.rom.at(0)}}</ion-label>
-        </ion-item>
-      </ion-list>
+      <div class="startButton">
+        <ion-button v-on:click="gotoScannerPage">Scan Game</ion-button>
+      </div>
     </ion-content>
   </ion-page>
 </template>
 
 <script lang="ts">
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonButton, IonList, IonLabel, IonListHeader, IonItem, useIonRouter } from '@ionic/vue';
+import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonButton, useIonRouter } from '@ionic/vue';
 import { defineComponent } from 'vue';
 import { states } from '../states'
 
@@ -38,11 +30,7 @@ export default defineComponent({
     IonPage,
     IonTitle,
     IonToolbar,
-    IonButton,
-    IonList,
-    IonListHeader,
-    IonLabel,
-    IonItem
+    IonButton
   },
 
   setup() {
@@ -65,10 +53,24 @@ export default defineComponent({
 </script>
 
 <style scoped>
-.startButton{
+.startButton, .img {
   display: flex;
   align-items: center;
   justify-content: center;
+  margin: 1rem;
+}
+
+.img {
+  scale: 0.25;
+  height: 25rem;
+}
+
+.bg {
+  color: aqua;
+}
+
+#background-content {
+  background-color: aqua;
 }
 
 #container {

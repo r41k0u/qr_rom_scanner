@@ -2,7 +2,7 @@
 
   <ion-page>
     <QRCodeScanner
-      license="DLS2eyJoYW5kc2hha2VDb2RlIjoiMjAwMDAxLTE2NDk4Mjk3OTI2MzUiLCJvcmdhbml6YXRpb25JRCI6IjIwMDAwMSIsInNlc3Npb25QYXNzd29yZCI6IndTcGR6Vm05WDJrcEQ5YUoifQ=="
+      license="DLS2eyJoYW5kc2hha2VDb2RlIjoiMTAxMzY1ODg2LVRYbFhaV0pRY205cVgyUmljZyIsIm9yZ2FuaXphdGlvbklEIjoiMTAxMzY1ODg2IiwiY2hlY2tDb2RlIjoxNTYyODM4NDY5fQ=="
       :torchOn="torchOn" :runtimeSettings="runtimeSettings" @onScanned="onScanned" @onPlayed="onPlayed"></QRCodeScanner>
     <ion-fab vertical="bottom" horizontal="start" slot="fixed">
       <ion-fab-button>
