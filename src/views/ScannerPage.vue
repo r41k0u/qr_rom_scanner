@@ -85,7 +85,8 @@ export default defineComponent({
             sharedStates.rom.push(base64ToUint8(stripped_string));
           }  
         });
-        router.back();
+        console.log(sharedStates.rom);
+        router.push("/chip8");
       } else {
         if (result.deviceOrientation === "portrait") {
           viewBox.value = "0 0 " + frameHeight + " " + frameWidth;
