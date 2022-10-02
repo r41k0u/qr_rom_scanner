@@ -14,12 +14,12 @@
         </ion-header>
         <div id="wrapper" ref="foo">
         <div id="emulator">
-        <game-screen></game-screen>
-        <game-pad></game-pad>
-        <background-change></background-change>     
-        <binary-change></binary-change>
-        <p id="romuint" style="visibility:hidden">{{sharedStates.rom.at(0)}}</p>
-      </div>
+          <game-screen></game-screen>
+          <game-pad></game-pad>
+          <background-change></background-change>     
+          <binary-change></binary-change>
+          <p id="romuint" style="visibility:hidden">{{sharedStates.rom.at(0)}}</p>
+        </div>
       </div>
       </ion-content>
     </ion-page>
@@ -54,8 +54,6 @@
   },
   setup() {
     const sharedStates = states;
-
-    console.log("baka", sharedStates);
 
     return {
       sharedStates

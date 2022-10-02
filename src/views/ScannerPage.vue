@@ -83,7 +83,6 @@ export default defineComponent({
             sharedStates.rom.push(base64ToUint8(stripped_string));
           }  
         });
-        console.log(sharedStates.rom);
        router.replace("/chip8");
       } else {
         if (result.deviceOrientation === "portrait") {
@@ -112,8 +111,6 @@ export default defineComponent({
 
     const toggleFlash = () => {
       torchOn.value = !torchOn.value;
-      console.log("toggleFlash");
-      console.log(torchOn.value);
     }
 
     const close = () => {
@@ -121,9 +118,6 @@ export default defineComponent({
     }
 
     onMounted(() => {
-      console.log(sharedStates.QRCodeOnly);
-      console.log(sharedStates.continuousScan);
-      console.log(sharedStates);
       //setTimeout(goBack,2000);
     });
     return {

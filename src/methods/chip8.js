@@ -1,5 +1,6 @@
 
 let  bincol='#FFF'
+let sound=document.getElementbyId("beep")
 class CPU {
 	constructor(renderer, keyboard) {
 		this.renderer = renderer;
@@ -315,8 +316,8 @@ class Keyboard {
     }
     onKeyDown(event) {
         let key = this.KEYMAP[event.which];
+        sound.play();
         this.keysPressed[key] = true;
-        console.log("terabaaprandi")
         if (this.onNextKeyPress !== null && key) {
             this.onNextKeyPress(parseInt(key));
             this.onNextKeyPress = null;
@@ -329,6 +330,7 @@ class Keyboard {
     }
 11
     virtualKeyDown(key){
+        sound.play();
         key = this.KEYMAP[key];
         this.keysPressed[key] = true;
     
@@ -411,16 +413,13 @@ function fun(){
     startTime = then;
     cpu.loadSpritesIntoMemory();
     let rom=Array.from(document.getElementById("romuint").textContent.split(','), Number)
-    console.log(rom)
     cpu.loadRom(rom);
     loop = requestAnimationFrame(step);
     let char;
-    console.log("BRUH")
 
     document.getElementById("gamepad").addEventListener("mousedown", (event) => {
         if(event.target.id!="gamepad"){
             char=event.target.id.slice(3,4).charCodeAt(0)
-            console.log("teri maa randi")
             keyboard.virtualKeyDown(char);        
         }  
         });

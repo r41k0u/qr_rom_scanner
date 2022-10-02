@@ -58,7 +58,6 @@ const handleRotation = (result:any, orientation: string, rotation:number) => {
 
 
 onMounted(async () => {
-  console.log(props);
   let options:Options = {};
   if (props.license) {
     options.license = props.license;
@@ -67,7 +66,6 @@ onMounted(async () => {
     options.dceLicense = props.dceLicense;
   }
   let result = await DBR.initialize(options); // To use your license: DBR.initialize({license: <your license>})
-  console.log("QRCodeScanner mounted");
   if (result.success === true) {
     initialized.value = true;
     if (frameReadListener) {
@@ -93,8 +91,6 @@ onMounted(async () => {
     });
 
     if (props.runtimeSettings) {
-      console.log("update runtime settings");
-      console.log(props.runtimeSettings);
       await DBR.initRuntimeSettingsWithString({template:props.runtimeSettings});
     }
 
@@ -103,10 +99,6 @@ onMounted(async () => {
       for (let index = 0; index < camerasResult.cameras.length; index++) {
         const cameraID = camerasResult.cameras[index];
         if (cameraID.toLowerCase().indexOf("founder") != -1 ){
-          console.log(cameraID)
-          console.log("selct founder camera"); //the USB camera's name of the developer
-          let selectionResult = await DBR.selectCamera({cameraID:cameraID});
-          console.log(selectionResult);
           break;
         }
       }
@@ -125,7 +117,6 @@ onBeforeUnmount(() => {
     onPlayedListener.remove();
   }
   DBR.stopScan();
-  console.log("QRCodeScanner unmount");
 });
 
 
