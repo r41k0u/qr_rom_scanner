@@ -1,6 +1,5 @@
 
-let  bincol='#FFF'
-let sound=document.getElementbyId("beep")
+let  bincol='red'
 class CPU {
 	constructor(renderer, keyboard) {
 		this.renderer = renderer;
@@ -304,7 +303,7 @@ class Keyboard {
 		}
 
         this.keysPressed = [];
-
+        6
         this.onNextKeyPress = null;
 
         window.addEventListener('keydown', this.onKeyDown.bind(this), false);
@@ -316,7 +315,6 @@ class Keyboard {
     }
     onKeyDown(event) {
         let key = this.KEYMAP[event.which];
-        sound.play();
         this.keysPressed[key] = true;
         if (this.onNextKeyPress !== null && key) {
             this.onNextKeyPress(parseInt(key));
@@ -330,7 +328,6 @@ class Keyboard {
     }
 11
     virtualKeyDown(key){
-        sound.play();
         key = this.KEYMAP[key];
         this.keysPressed[key] = true;
     
@@ -404,7 +401,7 @@ class Renderer {
 
 let loop;
 let fps = 60, fpsInterval, startTime, now, then, elapsed;
-const renderer = new Renderer(10);
+const renderer = new Renderer(5);
 const keyboard = new Keyboard();
 const cpu = new CPU(renderer, keyboard);
 function fun(){
@@ -417,6 +414,20 @@ function fun(){
     loop = requestAnimationFrame(step);
     let char;
 
+    document.getElementById("gamepad").addEventListener("touchstart", (event) => {
+        if(event.target.id!="gamepad"){
+            char=event.target.id.slice(3,4).charCodeAt(0)
+            keyboard.virtualKeyDown(char);        
+        }  
+        });
+
+    document.getElementById("gamepad").addEventListener("touchend", (event) => {    
+        if(event.target.id!="gamepad"){
+            char=event.target.id.slice(3,4).charCodeAt(0)
+            keyboard.virtualKeyUp(char);        
+        }    
+    });
+    
     document.getElementById("gamepad").addEventListener("mousedown", (event) => {
         if(event.target.id!="gamepad"){
             char=event.target.id.slice(3,4).charCodeAt(0)
