@@ -7,8 +7,11 @@
     </ion-header>
 
     <ion-content>
+      <div class="img">
+        <img src="assets/gameover.png" />
+      </div>
       <div class="startButton">
-        <ion-button v-on:click="gotoScannerPage">Scan Barcodes</ion-button>
+        <ion-button v-on:click="gotoScannerPage">Scan Games</ion-button>
       </div>
       <ion-list>
         <ion-list-header v-if="sharedStates.barcodeResults.length>0">
@@ -65,10 +68,15 @@ export default defineComponent({
 </script>
 
 <style scoped>
-.startButton{
+.startButton, .img{
   display: flex;
   align-items: center;
   justify-content: center;
+  margin: 0.5rem;
+}
+
+.img {
+  scale: 80%;
 }
 
 #container {

@@ -74,8 +74,6 @@ export default defineComponent({
     let scanned = false;
 
     const onScanned = (result: ScanResult) => {
-      console.log("onScanned");
-      console.log(result);
       if (result.results.length > 0 && scanned === false && sharedStates.continuousScan === false) {
         scanned = true;
         sharedStates.barcodeResults = result.results;
@@ -86,7 +84,7 @@ export default defineComponent({
           }  
         });
         console.log(sharedStates.rom);
-        router.push("/chip8");
+        router.replace("/chip8");
       } else {
         if (result.deviceOrientation === "portrait") {
           viewBox.value = "0 0 " + frameHeight + " " + frameWidth;

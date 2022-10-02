@@ -50,18 +50,12 @@
       BackgroundChange,
   },
   setup() {
-    const router = useIonRouter();
     const sharedStates = states;
 
-    const gotoScannerPage = () => {
-      router.push('/chip8');
-    }
-
-    
+    console.log("baka", sharedStates);
 
     return {
-      sharedStates,
-      gotoScannerPage
+      sharedStates
     };
   },
     }
