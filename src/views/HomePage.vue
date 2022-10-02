@@ -5,18 +5,12 @@
         <ion-title>QR Code Scanner</ion-title>
       </ion-toolbar>
     </ion-header>
-    
+
     <ion-content>
-      <ion-button expand="full" v-on:click="gotoScannerPage">Scan Barcodes</ion-button>
+      <div class="startButton">
+        <ion-button v-on:click="gotoScannerPage">Scan Barcodes</ion-button>
+      </div>
       <ion-list>
-        <ion-item>
-          <ion-label>Continuous Scan</ion-label>
-          <ion-checkbox slot="end" v-model="sharedStates.continuousScan"></ion-checkbox>
-        </ion-item>
-        <ion-item>
-          <ion-label>Scan QR Codes Only</ion-label>
-          <ion-checkbox slot="end" v-model="sharedStates.QRCodeOnly"></ion-checkbox>
-        </ion-item>
         <ion-list-header v-if="sharedStates.barcodeResults.length>0">
           <ion-label>Results:</ion-label>
         </ion-list-header>
@@ -32,7 +26,7 @@
 </template>
 
 <script lang="ts">
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonButton, IonList, IonLabel, IonListHeader, IonCheckbox, IonItem, useIonRouter } from '@ionic/vue';
+import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonButton, IonList, IonLabel, IonListHeader, IonItem, useIonRouter } from '@ionic/vue';
 import { defineComponent } from 'vue';
 import { states } from '../states'
 
@@ -47,7 +41,6 @@ export default defineComponent({
     IonButton,
     IonList,
     IonListHeader,
-    IonCheckbox,
     IonLabel,
     IonItem
   },
@@ -60,7 +53,7 @@ export default defineComponent({
       router.push('/scanner');
     }
 
-    return { 
+    return {
       sharedStates,
       gotoScannerPage
     };
@@ -72,9 +65,15 @@ export default defineComponent({
 </script>
 
 <style scoped>
+.startButton{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 #container {
   text-align: center;
-  
+
   position: absolute;
   left: 0;
   right: 0;
@@ -90,9 +89,9 @@ export default defineComponent({
 #container p {
   font-size: 16px;
   line-height: 22px;
-  
+
   color: #8c8c8c;
-  
+
   margin: 0;
 }
 

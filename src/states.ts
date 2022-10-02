@@ -3,7 +3,7 @@ import { reactive } from "vue";
 
 export const states = reactive({
   QRCodeOnly: true,
-  continuousScan: true,
+  continuousScan: false,
   barcodeResults: [] as TextResult[],
   rom: [] as Uint8Array[],
 });
